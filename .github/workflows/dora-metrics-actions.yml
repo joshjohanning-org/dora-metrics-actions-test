@@ -37,3 +37,10 @@ jobs:
           
           # Use perl to replace the text between the markers
           perl -i -pe "BEGIN{undef $/;} s/\Q$startMarker\E.*?\Q$endMarker\E/$startMarker\n$replacementEscaped\n$endMarker/smg" README.md
+
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add README.me || true
+          git commit -m "docs: updating DORA metrics
+            [no ci]" || true
+          git push || true
