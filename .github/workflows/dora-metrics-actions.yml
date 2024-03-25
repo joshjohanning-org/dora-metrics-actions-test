@@ -1,0 +1,39 @@
+name: dora-metrics-actions
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: deployment-frequency
+        uses: joshjohanning/deployment-frequency@main
+        id: delpoyment-frequency
+        with:
+          workflows: 'CI'
+          owner-repo: '${{ github.repository }}'
+          pat-token: "${{ github.token }}"
+      - name: lead-time-for-changes
+        uses: joshjohanning/lead-time-for-changes@main
+        id: lead-time
+        with:
+          workflows: 'CI'
+          owner-repo: '${{ github.repository }}'
+          pat-token: "${{ github.token }}"
+      - name: add to readme
+        run: |   
+          # Define start and end markers
+          startMarker="<!-- Start Dora Metrics -->"
+          endMarker="<!-- End Dora Metrics -->"
+          
+          # Read the content of dora-deployment-frequency.md and dora-lead-time.md into a variable
+          replacement=$(cat ${{ steps.deployment-frequency.outputs.markdown-file }} ${{ steps.lead-time.outputs.markdown-file }})
+          
+          # Escape special characters in the replacement text
+          replacementEscaped=$(printf '%s\n' "$replacement" | perl -pe 's/([\\\/\$\(\)@])/\\$1/g')
+          
+          # Use perl to replace the text between the markers
+          perl -i -pe "BEGIN{undef $/;} s/\Q$startMarker\E.*?\Q$endMarker\E/$startMarker\n$replacementEscaped\n$endMarker/smg" README.md
