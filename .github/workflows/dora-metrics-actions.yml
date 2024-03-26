@@ -33,6 +33,13 @@ jobs:
         with:
           workflows: 'CI'
           owner-repo: '${{ github.repository }}'
+          actions-token: "${{ github.token }}"
+      - name: lead-time-for-changes
+        uses: joshjohanning/lead-time-for-changes@main
+        id: lead-time-pat
+        with:
+          workflows: 'CI'
+          owner-repo: '${{ github.repository }}'
           pat-token: "${{ github.token }}"
       - name: add to readme
         run: |
