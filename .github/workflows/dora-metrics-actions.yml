@@ -20,6 +20,13 @@ jobs:
           workflows: 'CI'
           owner-repo: '${{ github.repository }}'
           actions-token: "${{ github.token }}"
+      - name: deployment-frequency-pat
+        uses: joshjohanning/deployment-frequency@main
+        id: deployment-frequency-pat
+        with:
+          workflows: 'CI'
+          owner-repo: '${{ github.repository }}'
+          pat-token: "${{ github.token }}"
       - name: lead-time-for-changes
         uses: joshjohanning/lead-time-for-changes@main
         id: lead-time
