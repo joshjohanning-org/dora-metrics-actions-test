@@ -20,13 +20,6 @@ jobs:
           workflows: 'CI'
           owner-repo: '${{ github.repository }}'
           actions-token: "${{ github.token }}"
-      - name: deployment-frequency
-        uses: DeveloperMetrics/deployment-frequency@main
-        id: deployment-frequency2
-        with:
-          workflows: 'CI'
-          owner-repo: '${{ github.repository }}'
-          actions-token: "${{ github.token }}"
       - name: lead-time-for-changes
         uses: joshjohanning/lead-time-for-changes@main
         id: lead-time
