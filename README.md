@@ -5,10 +5,13 @@
 <!-- Start Dora Metrics -->
 
 
-![Deployment Frequency](https://img.shields.io/badge/frequency-none-lightgrey?logo=github&label=Deployment%20frequency)
-
-No data to display for joshjohanning-org/dora-metrics-actions-test for workflow(s) CI over the last 30 days
-
+![Deployment Frequency](https://img.shields.io/badge/frequency-2.1%20times%20per%20week-green?logo=github&label=Deployment%20frequency)
+**Definition:** For the primary application or service, how often is it successfully deployed to production.
+**Results:** Deployment frequency is **2.1 times per week** with a **High** rating, over the last **30 days**.
+**Details**:
+- Repository: joshjohanning-org/dora-metrics-actions-test using main branch
+- Workflow(s) used: CI
+- Active days of deployment: 2 days
 ---
 
 
