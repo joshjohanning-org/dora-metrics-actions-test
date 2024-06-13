@@ -1,5 +1,11 @@
 # dora-metrics-actions-test
 
+an example using the deployment frequency and lead time for changes actions
+
+and a good example of committing the code back to the repository in an Actions workflow with proper checks in place
+
+the results are added to the readme in the example below from the `Start Dora Metrics` and `End Dora Metrics` comments in the code.
+
 ## Results
 
 <!-- Start Dora Metrics -->
